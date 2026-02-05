@@ -3,7 +3,7 @@ using UnityEngine;
 public class UIRouter : MonoBehaviour
 {
     public GameObject home;
-    public GameObject ConfigController;
+    public GameObject config;
     public GameObject playing;
     public GameObject ranking;
 
