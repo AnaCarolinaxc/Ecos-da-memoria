@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: de4a7b971bb21954a9f43a166860c127
+guid: 54dc140bf70782a44bb872a70dfab06a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5096635304834373893
-    second: LilacBTN_0
+      213: 5737998598950370623
+    second: bg-memoryGame_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,10 +72,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LilacBTN_0
+      name: bg-memoryGame_0
       rect:
         serializedVersion: 2
-        x: 25
-        y: 7
-        width: 254
-        height: 87
+        x: 0
+        y: 0
+        width: 970
+        height: 992
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bf6e1a1813d1549b0800000000000000
-      internalID: -5096635304834373893
+      spriteID: f3d3024135771af40800000000000000
+      internalID: 5737998598950370623
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LilacBTN_0: -5096635304834373893
+      bg-memoryGame_0: 5737998598950370623
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
