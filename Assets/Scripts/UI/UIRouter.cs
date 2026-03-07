@@ -15,11 +15,13 @@ public class UIRouter : MonoBehaviour
     public AudioClip configSound;
     public AudioClip playingSound;
     public AudioClip rankingSound;
+    public AudioClip selectSound;
+
 
     void Start() => ShowInitial();
 
     public void ShowHome()    => ShowOnly(home, homeSound, true);
-    public void ShowSelect()  => ShowOnly(select, null, false);
+    public void ShowSelect()  => ShowOnly(select, selectSound, true);
     public void ShowInitial()  => ShowOnly(initial, null, false);
     public void ShowConfig()  => ShowOnly(config, configSound, true);
     public void ShowPlaying() => ShowOnly(playing, playingSound, true);
