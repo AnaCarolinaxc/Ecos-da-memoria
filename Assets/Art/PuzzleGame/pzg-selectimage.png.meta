@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f5e662228f810684a8e60324d5ad02c3
+guid: e0bb348a5d9d2ba4da11cc5f68072cc1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8308400376241031517
-    second: backcard_0
+      213: 8538922121049537769
+    second: pzg-selectimage_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: backcard_0
+      name: pzg-selectimage_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 8
-        width: 786
-        height: 791
+        x: 0
+        y: 0
+        width: 316
+        height: 155
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3a67e6aa0e1a2bc80800000000000000
-      internalID: -8308400376241031517
+      spriteID: 9ecf1ed8d68508670800000000000000
+      internalID: 8538922121049537769
       vertices: []
       indices: 
       edges: []
@@ -135,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      backcard_0: -8308400376241031517
+      pzg-selectimage_0: 8538922121049537769
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

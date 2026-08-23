@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 153e9bf59303f134b9db23b18bc7db66
+guid: a54c6a7187404d7498d0f9bf583eeb7f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7635013726552783190
-    second: home_0
+      213: -4208827329615559320
+    second: upg-btn-cian_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: home_0
+      name: upg-btn-cian_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 15
-        width: 512
-        height: 482
+        x: 17
+        y: 1
+        width: 254
+        height: 187
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 659f862488405f960800000000000000
-      internalID: 7635013726552783190
+      spriteID: 8650f41d7dd3795c0800000000000000
+      internalID: -4208827329615559320
       vertices: []
       indices: 
       edges: []
@@ -135,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      home_0: 7635013726552783190
+      upg-btn-cian_0: -4208827329615559320
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

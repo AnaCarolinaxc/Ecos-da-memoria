@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 539aff247126fa642a74b21013b0882b
+guid: b0191c0ab9392bf4d972b9ffd01bd5ea
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8233850685897761976
-    second: botao-roxo_0
+      213: -6565420544765167480
+    second: aog-yellowball_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,6 +97,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -113,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: botao-roxo_0
+      name: aog-yellowball_0
       rect:
         serializedVersion: 2
-        x: 81
-        y: 33
-        width: 821
-        height: 176
+        x: 0
+        y: 0
+        width: 95
+        height: 91
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84b157d0d6c7bbd80800000000000000
-      internalID: -8233850685897761976
+      spriteID: 8887834bcc0f2e4a0800000000000000
+      internalID: -6565420544765167480
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      botao-roxo_0: -8233850685897761976
+      aog-yellowball_0: -6565420544765167480
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
