@@ -1,0 +1,3 @@
+C:\Users\carol\Desktop\Projetos\ecos-da-memoria\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\carol\Desktop\Projetos\ecos-da-memoria\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\FramePacing\CMakeLists.txt
+C:\Users\carol\Desktop\Projetos\ecos-da-memoria\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

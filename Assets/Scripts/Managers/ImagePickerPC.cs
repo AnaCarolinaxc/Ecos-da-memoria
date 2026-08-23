@@ -3,7 +3,7 @@ using UnityEngine;
 public class ImagePickerPC : MonoBehaviour
 {
     public GalleryUI gallery;
-
+    public ConfigProgressivo configProgressivo;
     public void PickImage()
     {
         NativeGallery.GetImageFromGallery(
@@ -31,6 +31,7 @@ public class ImagePickerPC : MonoBehaviour
 
                 Debug.Log("ANDROID: Texture carregada");
                 gallery.AddImage(texture);
+                configProgressivo?.OnImagemAdicionada();
             },
             "Selecione uma imagem"
         );

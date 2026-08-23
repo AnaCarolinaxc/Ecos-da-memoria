@@ -15,11 +15,13 @@ public class UIRouter : MonoBehaviour
     public AudioClip configSound;
     public AudioClip playingSound;
     public AudioClip rankingSound;
+    public AudioClip selectSound;
+
 
     void Start() => ShowInitial();
 
     public void ShowHome()    => ShowOnly(home, homeSound, true);
-    public void ShowSelect()  => ShowOnly(select, null, false);
+    public void ShowSelect()  => ShowOnly(select, selectSound, true);
     public void ShowInitial()  => ShowOnly(initial, null, false);
     public void ShowConfig()  => ShowOnly(config, configSound, true);
     public void ShowPlaying() => ShowOnly(playing, playingSound, true);
@@ -27,9 +29,8 @@ public class UIRouter : MonoBehaviour
     public void ShowRanking(bool playSound = true)
         => ShowOnly(ranking, rankingSound, playSound);
 
-    void ShowOnly(GameObject target, AudioClip clip, bool playSound)
+void ShowOnly(GameObject target, AudioClip clip, bool playSound)
 {
-    // desativa telas
     initial.SetActive(false);
     select.SetActive(false);
     home.SetActive(false);
@@ -37,14 +38,14 @@ public class UIRouter : MonoBehaviour
     playing.SetActive(false);
     ranking.SetActive(false);
 
-
-    // ativa a nova
     target.SetActive(true);
 
-
-    // toca som da tela (se permitido)
     if (uiSource != null) uiSource.Stop();
     if (playSound && clip != null && uiSource != null)
-        uiSource.PlayOneShot(clip);
+    {
+        uiSource.clip = clip;
+        uiSource.time = 0f;
+        uiSource.Play(); // mudou de PlayOneShot para Play
+    }
 }
 }

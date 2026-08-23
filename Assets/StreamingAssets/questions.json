@@ -1,0 +1,54 @@
+{
+  "perguntas": [
+    {
+      "id": 1,
+      "texto": "Usar o Ecos da Memória me ajuda a exercitar minha memória.",
+      "opcoes": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]
+    },
+    {
+      "id": 2,
+      "texto": "O uso de fotos pessoais facilitou o reconhecimento das imagens.",
+      "opcoes": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]
+    },
+    {
+      "id": 3,
+      "texto": "Usar o jogo traz benefícios para minha rotina.",
+      "opcoes": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]
+    },
+    {
+      "id": 4,
+      "texto": "Gostaria de continuar jogando nas próximas sessões.",
+      "opcoes": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]
+    },
+    {
+      "id": 5,
+      "texto": "O jogo despertou lembranças ou emoções.",
+      "opcoes": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]
+    },
+    {
+      "id": 6,
+      "texto": "As instruções por voz ajudaram na compreensão do jogo.",
+      "opcoes": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]
+    },
+    {
+      "id": 7,
+      "texto": "As telas do jogo estão claras e compreensíveis.",
+      "opcoes": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]
+    },
+    {
+      "id": 8,
+      "texto": "Consegui jogar sem precisar de muita ajuda.",
+      "opcoes": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]
+    },
+    {
+      "id": 9,
+      "texto": "Interagir com o jogo não exigiu muito esforço.",
+      "opcoes": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]
+    },
+    {
+      "id": 10,
+      "texto": "O tempo de cada partida foi adequado para minha disposição.",
+      "opcoes": ["Discordo totalmente", "Discordo", "Neutro", "Concordo", "Concordo totalmente"]
+    }
+  ]
+}
