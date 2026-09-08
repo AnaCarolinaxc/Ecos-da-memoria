@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: bbabc064f5ce3214da3d1d9b9b3ca978
+guid: 5306ef8bfcafb534cb438ebb88013e86
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7213474468923880965
-    second: botao-rosa_0
+      213: -1879608710844171232
+    second: puzzlegame-bg_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,6 +97,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -113,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: botao-rosa_0
+      name: puzzlegame-bg_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 35
-        width: 916
-        height: 183
+        x: 0
+        y: 0
+        width: 852
+        height: 1846
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 506be849fc86b1460800000000000000
-      internalID: 7213474468923880965
+      spriteID: 02c376906d94ae5e0800000000000000
+      internalID: -1879608710844171232
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      botao-rosa_0: 7213474468923880965
+      puzzlegame-bg_0: -1879608710844171232
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

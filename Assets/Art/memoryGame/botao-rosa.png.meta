@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: abd2b68820ba6164dace87b447b04419
+guid: bbabc064f5ce3214da3d1d9b9b3ca978
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8707748511301681069
-    second: semfundo_0
+      213: 7213474468923880965
+    second: botao-rosa_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,17 +109,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: semfundo_0
+      name: botao-rosa_0
       rect:
         serializedVersion: 2
-        x: 213
-        y: 158
-        width: 1371
-        height: 462
+        x: 18
+        y: 35
+        width: 916
+        height: 183
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dafb299a22328d870800000000000000
-      internalID: 8707748511301681069
+      spriteID: 506be849fc86b1460800000000000000
+      internalID: 7213474468923880965
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      semfundo_0: 8707748511301681069
+      botao-rosa_0: 7213474468923880965
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
