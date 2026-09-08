@@ -9144,8 +9144,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14281,7 +14281,7 @@ MonoBehaviour:
   pzg_homePanel: {fileID: 1824294901}
   pzg_configPanel: {fileID: 168115470}
   pzg_playingPanel: {fileID: 69916839}
-  pzg_rankingPanel: {fileID: 0}
+  pzg_rankingPanel: {fileID: 1086578824}
   uiSource: {fileID: 1392375832}
   homeSound: {fileID: 0}
   configSound: {fileID: 8300000, guid: f6d9c04360ad4c843a6621e246911ebe, type: 3}
