@@ -37,12 +37,13 @@ class ScoreListWrapper
 
 public static class RankingSystem
 {
-    const string KEY = "RANKING_V3";
+    const string KEY_PREFIX = "RANKING_V3_";
     const int MAX = 8;
+    static string KeyFor (string gameId) => KEY_PREFIX + gameId;
 
-    public static List<ScoreEntry> Load()
+    public static List<ScoreEntry> Load(string gameId = "memory")
     {
-        var json = PlayerPrefs.GetString(KEY, "");
+        var json = PlayerPrefs.GetString(KeyFor(gameId), "");
         if (string.IsNullOrEmpty(json)) return new List<ScoreEntry>();
 
         var w = JsonUtility.FromJson<ScoreListWrapper>(json);
@@ -50,9 +51,9 @@ public static class RankingSystem
     }
 
     // novo: recebe rows/cols
-    public static void AddScore(int tries, int seconds, int rows, int cols)
+    public static void AddScore(int tries, int seconds, int rows, int cols, string gameId = "memory")
     {
-        var list = Load();
+        var list = Load(gameId);
         list.Add(new ScoreEntry
         {
             tries = tries,
@@ -87,12 +88,12 @@ public static class RankingSystem
         if (list.Count > MAX) list.RemoveRange(MAX, list.Count - MAX);
 
         var wrapper = new ScoreListWrapper { list = list };
-        PlayerPrefs.SetString(KEY, JsonUtility.ToJson(wrapper));
+        PlayerPrefs.SetString(KeyFor(gameId), JsonUtility.ToJson(wrapper));
         PlayerPrefs.Save();
     }
 
-    public static void Clear()
+    public static void Clear(string gameId = "memory")
     {
-        PlayerPrefs.DeleteKey(KEY);
+        PlayerPrefs.DeleteKey(KeyFor(gameId));
     }
 }

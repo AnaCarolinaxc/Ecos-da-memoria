@@ -28,14 +28,21 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (I != null) { Destroy(gameObject); return; }
+        if (I != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         I = this;
         DontDestroyOnLoad(gameObject);
     }
 
     void Update()
     {
-        if (!running) return;
+        if (!running)
+        {
+            return;
+        }
         elapsed += Time.deltaTime;
         RefreshUI();
     }
@@ -77,9 +84,18 @@ public class GameManager : MonoBehaviour
 
     void RefreshUI()
     {
-        if (timeText) timeText.text = $"Tempo: {Mathf.FloorToInt(elapsed)}";
-        if (triesText) triesText.text = $"Tentativas: {Tries}";
-        if (pairsText) pairsText.text = $"Pares: {MatchedPairs}/{PairCount}";
+        if (timeText)
+        {
+            timeText.text = $"Tempo: {Mathf.FloorToInt(elapsed)}";
+        }
+        if (triesText)
+        {
+            triesText.text = $"Tentativas: {Tries}";
+        }
+        if (pairsText)
+        {
+            pairsText.text = $"Pares: {MatchedPairs}/{PairCount}";
+        }
     }
     
    
