@@ -14,6 +14,7 @@ public class PuzzleStartGameButton : MonoBehaviour
         }
 
         uiRouter.Show_pzgPlaying();
+        Canvas.ForceUpdateCanvases(); // força o layout do painel de jogo a atualizar antes de gerar as peças
         puzzleBoard.StartGame();
     }
 }

@@ -6,6 +6,7 @@ public class RankingUI : MonoBehaviour
 {
     public Transform content;          // ListContainer
     public GameObject rowPrefab;       // RankingRow prefab
+    public string gameId = "memory";
 
     void OnEnable()
     {
@@ -18,7 +19,7 @@ public class RankingUI : MonoBehaviour
         for (int i = content.childCount - 1; i >= 0; i--)
             Destroy(content.GetChild(i).gameObject);
 
-        List<ScoreEntry> list = RankingSystem.Load();
+        List<ScoreEntry> list = RankingSystem.Load(gameId);
 
         if (list.Count == 0)
         {

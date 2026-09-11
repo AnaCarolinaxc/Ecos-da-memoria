@@ -20,8 +20,13 @@ public class PuzzleBoard : MonoBehaviour
         int cols = PuzzleManager.I.cols;
         Sprite source = PuzzleManager.I.selectedImage;
 
+        Debug.Log($"[PuzzleBoard] StartGame rows={rows} cols={cols} source={source} gridParent={gridParent} piecePrefab={piecePrefab}");
+
         BuildGrid(rows, cols);
-        SpawnPieces(SliceSprite(source, rows, cols));
+        var slices = SliceSprite(source, rows, cols);
+        Debug.Log($"[PuzzleBoard] slices geradas={slices.Count}");
+        SpawnPieces(slices);
+        Debug.Log($"[PuzzleBoard] pieces criadas={pieces.Count}");
         Shuffle();
 
         PuzzleManager.I.StartRun();
@@ -155,6 +160,7 @@ public class PuzzleBoard : MonoBehaviour
                 return;
             }
         }
+        Debug.Log("[PuzzleBoard] Todas as peças corretas! Chamando PuzzleManager.Win()");
         PuzzleManager.I.Win();
     }
 }

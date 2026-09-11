@@ -6,6 +6,7 @@ public class PuzzleBoardSizeSelector : MonoBehaviour
     public Button[] buttons; // ordem: 2x2, 3x3, 4x4
     public Color normal = Color.white;
     public Color selected = new Color(0.9f, 0.5f, 0.75f);
+    public PuzzlePreviewGrid previewGrid;
 
     void Start() => Select(1); //já vem marcado no 3x3
 
@@ -23,5 +24,6 @@ public class PuzzleBoardSizeSelector : MonoBehaviour
         int size = index switch { 0 => 2, 1 => 3, 2 => 4, _ => 3 };
         PuzzleManager.I.rows = size;
         PuzzleManager.I.cols = size;
+        previewGrid.Redraw(size, size);
     }
 }

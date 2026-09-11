@@ -73,6 +73,7 @@ public class PuzzleManager : MonoBehaviour
     {
         StopRun();
         RankingSystem.AddScore(Tries, ElapsedSeconds, rows, cols, "puzzle");
+        Debug.Log($"[PuzzleManager] Win() executado. Tem inscritos no OnWin? {OnWin != null}");
         OnWin?.Invoke();
     }
 

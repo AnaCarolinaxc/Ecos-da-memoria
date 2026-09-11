@@ -12,7 +12,7 @@ public class ScoreEntry
     public int rows;
     public int cols;
 
-    // opcional: cache do multiplicador (não precisa salvar, pode calcular)
+    //cache do multiplicador (não precisa salvar, pode calcular)
     public int Pairs => (rows * cols) / 2;
 
     public float DifficultyMult

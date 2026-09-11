@@ -5,6 +5,8 @@ public class PuzzleImagePicker : MonoBehaviour
 {
     [Header("UI")]
     public Image previewImage; // caixa de "Pré-visualização"
+    
+    public PuzzlePreviewGrid previewGrid; // grid que mostra as linhas de corte da foto
 
     public void PickImage()
     {
@@ -36,6 +38,7 @@ public class PuzzleImagePicker : MonoBehaviour
                     previewImage.sprite = sprite;
                     previewImage.preserveAspect = true;
                     previewImage.color = Color.white; // caso o placeholder use alpha 0
+                    previewGrid.Redraw(PuzzleManager.I.rows, PuzzleManager.I.cols);
                 }
             },
             "Selecionar imagem"

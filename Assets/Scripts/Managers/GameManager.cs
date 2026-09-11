@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         if (MatchedPairs >= PairCount)
         {
             StopRun();
-            RankingSystem.AddScore(Tries, ElapsedSeconds, rows, cols);
+            RankingSystem.AddScore(Tries, ElapsedSeconds, rows, cols, "memory");
             OnWin?.Invoke();
         }
     }

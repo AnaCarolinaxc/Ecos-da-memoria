@@ -710,9 +710,7 @@ GameObject:
   - component: {fileID: 69916845}
   - component: {fileID: 69916844}
   - component: {fileID: 69916843}
-  - component: {fileID: 69916842}
-  - component: {fileID: 69916841}
-  - component: {fileID: 69916840}
+  - component: {fileID: 69916846}
   m_Layer: 5
   m_Name: PlayingPanel
   m_TagString: Untagged
@@ -720,63 +718,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &69916840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69916839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aba6980d1ab23b4197311c875ce25c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameBoard
-  boardParent: {fileID: 444061929}
-  grid: {fileID: 444061928}
-  cardPrefab: {fileID: 9180264273488211402, guid: d3f5cfb4d7be0ce41b49e52f3502e8ad, type: 3}
-  spacing: {x: 20, y: 20}
-  padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  mismatchHideDelay: 0.7
---- !u!114 &69916841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69916839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b84d231e43fe4dafd766ed4b0a221, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WinToRanking
-  uiRouter: {fileID: 0}
-  delay: 0.6
-  sfxSource: {fileID: 0}
-  victoryClips: []
---- !u!114 &69916842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69916839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b84d231e43fe4dafd766ed4b0a221, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WinToRanking
-  uiRouter: {fileID: 1612434571}
-  delay: 0.6
-  sfxSource: {fileID: 916918783}
-  victoryClips:
-  - {fileID: 8300000, guid: f9557a8de0abb1441b65f67fdc3adee3, type: 3}
-  - {fileID: 8300000, guid: cc1d3811722c82443a4270eefa7bf694, type: 3}
-  - {fileID: 8300000, guid: 8d2699a5ba423f549841871bffed625f, type: 3}
 --- !u!114 &69916843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,6 +781,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 980, y: 1820}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &69916846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69916839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eacda529aa724dd46b7cd15db92903d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleBoard
+  gridParent: {fileID: 444061929}
+  piecePrefab: {fileID: 1158213441}
 --- !u!1 &77101861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,6 +1364,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93872088}
   m_CullTransparentMesh: 1
+--- !u!1 &105598965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 105598967}
+  - component: {fileID: 105598966}
+  m_Layer: 0
+  m_Name: PuzzleImagePicker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &105598966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105598965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e16d826b94f06c48b589b6e7a597b6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleImagePicker
+  previewImage: {fileID: 608166011}
+--- !u!4 &105598967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105598965}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 220.36844, y: 309.58023, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &116801840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,7 +1785,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1406029902}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ConfigProgressivo, Assembly-CSharp
         m_MethodName: OnTamanhoSelecionado
         m_Mode: 1
@@ -1848,7 +1848,6 @@ GameObject:
   - component: {fileID: 128161881}
   - component: {fileID: 128161880}
   - component: {fileID: 128161879}
-  - component: {fileID: 128161878}
   m_Layer: 5
   m_Name: ConfigPanel
   m_TagString: Untagged
@@ -1886,30 +1885,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 980, y: 1820}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &128161878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128161876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 359d0f82b13a08a4588b386a3d82773e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ConfigProgressivo
-  areaImagens: {fileID: 0}
-  btnAdicionarImagem: {fileID: 0}
-  btnIniciarJogo: {fileID: 1811889643}
-  gallery: {fileID: 128161879}
-  uiSource: {fileID: 1392375832}
-  configSound: {fileID: 8300000, guid: f6d9c04360ad4c843a6621e246911ebe, type: 3}
-  tempoFase1Inicio: 0
-  tempoFase1Fim: 3
-  tempoFase2Inicio: 3
-  tempoFase2Fim: 22
-  tempoFase3Inicio: 22
-  tempoFase3Fim: 25
 --- !u!114 &128161879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2378,6 +2353,56 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &158487220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 158487222}
+  - component: {fileID: 158487221}
+  m_Layer: 0
+  m_Name: PuzzleBoardSizeSelector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &158487221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158487220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f796dfda152978246be46f387e5ba80f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleBoardSizeSelector
+  buttons:
+  - {fileID: 2107248756}
+  - {fileID: 1652092231}
+  - {fileID: 879099665}
+  normal: {r: 0.9568628, g: 0.86274517, b: 0.9607844, a: 1}
+  selected: {r: 0.97647065, g: 0.6431373, b: 0.9960785, a: 1}
+--- !u!4 &158487222
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158487220}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 220.36844, y: 309.58023, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &168115470
 GameObject:
   m_ObjectHideFlags: 0
@@ -2391,7 +2416,6 @@ GameObject:
   - component: {fileID: 168115474}
   - component: {fileID: 168115473}
   - component: {fileID: 168115472}
-  - component: {fileID: 168115471}
   m_Layer: 5
   m_Name: ConfigPanel
   m_TagString: Untagged
@@ -2399,30 +2423,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &168115471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 168115470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 359d0f82b13a08a4588b386a3d82773e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ConfigProgressivo
-  areaImagens: {fileID: 0}
-  btnAdicionarImagem: {fileID: 0}
-  btnIniciarJogo: {fileID: 980314290}
-  gallery: {fileID: 168115472}
-  uiSource: {fileID: 1392375832}
-  configSound: {fileID: 8300000, guid: f6d9c04360ad4c843a6621e246911ebe, type: 3}
-  tempoFase1Inicio: 0
-  tempoFase1Fim: 3
-  tempoFase2Inicio: 3
-  tempoFase2Fim: 22
-  tempoFase3Inicio: 22
-  tempoFase3Fim: 25
 --- !u!114 &168115472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2904,9 +2904,9 @@ RectTransform:
   m_Father: {fileID: 1416821702}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: -17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &221012638
 MonoBehaviour:
@@ -3723,6 +3723,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287626243}
   m_CullTransparentMesh: 1
+--- !u!1 &287738880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 287738882}
+  - component: {fileID: 287738881}
+  m_Layer: 0
+  m_Name: PuzzleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &287738881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287738880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2cf8d0f0c61a074ea50099e1c3fcdfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleManager
+  rows: 3
+  cols: 3
+  selectedImage: {fileID: 0}
+  timeText: {fileID: 0}
+  triesText: {fileID: 0}
+--- !u!4 &287738882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287738880}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 497.66025, y: 936.9454, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &299204015
 GameObject:
   m_ObjectHideFlags: 0
@@ -4321,7 +4370,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1406029902}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ConfigProgressivo, Assembly-CSharp
         m_MethodName: OnTamanhoSelecionado
         m_Mode: 1
@@ -7723,7 +7772,7 @@ RectTransform:
   m_Father: {fileID: 431491044}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9235,9 +9284,9 @@ RectTransform:
   m_Father: {fileID: 1416821702}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_SizeDelta: {x: 20, y: -17}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &663941076
 MonoBehaviour:
@@ -11308,8 +11357,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1140351823}
-        m_TargetAssemblyTypeName: ImagePickerPC, Assembly-CSharp
+      - m_Target: {fileID: 105598966}
+        m_TargetAssemblyTypeName: PuzzleImagePicker, Assembly-CSharp
         m_MethodName: PickImage
         m_Mode: 1
         m_Arguments:
@@ -11415,7 +11464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd27ab25e6681d458d3b49dbdaeaa9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RankingUI
-  content: {fileID: 0}
+  content: {fileID: 344029256}
   rowPrefab: {fileID: 8431247081946396846, guid: f6a0d436e90a1dc4fac40c838c61b555, type: 3}
 --- !u!114 &784110508
 MonoBehaviour:
@@ -13360,38 +13409,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1219001695}
-        m_TargetAssemblyTypeName: ConfigController, Assembly-CSharp
-        m_MethodName: SetBoard4x2
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 856586364}
-        m_TargetAssemblyTypeName: BoardSizeSelectorBtns, Assembly-CSharp
+      - m_Target: {fileID: 158487221}
+        m_TargetAssemblyTypeName: PuzzleBoardSizeSelector, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 168115471}
-        m_TargetAssemblyTypeName: ConfigProgressivo, Assembly-CSharp
-        m_MethodName: OnImagemAdicionada
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -13416,7 +13441,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1869669095861986661, guid: 6b1835fb552300b4a812f05a1f58a809, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14531,7 +14556,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1406029902}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ConfigProgressivo, Assembly-CSharp
         m_MethodName: OnTamanhoSelecionado
         m_Mode: 1
@@ -15027,8 +15052,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1749310813}
-        m_TargetAssemblyTypeName: StartGameButton, Assembly-CSharp
+      - m_Target: {fileID: 1626028497}
+        m_TargetAssemblyTypeName: PuzzleStartGameButton, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -16378,7 +16403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1086578825
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16412,12 +16437,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086578824}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fd27ab25e6681d458d3b49dbdaeaa9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RankingUI
-  content: {fileID: 0}
+  content: {fileID: 1937033818}
   rowPrefab: {fileID: 8431247081946396846, guid: f6a0d436e90a1dc4fac40c838c61b555, type: 3}
 --- !u!114 &1086578827
 MonoBehaviour:
@@ -16426,7 +16451,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086578824}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -16490,7 +16515,7 @@ RectTransform:
   m_Father: {fileID: 975166913}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -17677,6 +17702,11 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   mismatchHideDelay: 0.7
+--- !u!1 &1158213441 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9045399214765984610, guid: 071108b6cd0851c43931244962d44756, type: 3}
+  m_PrefabInstance: {fileID: 1340802512026639933}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1159089207
 GameObject:
   m_ObjectHideFlags: 0
@@ -22135,7 +22165,6 @@ GameObject:
   - component: {fileID: 1406029905}
   - component: {fileID: 1406029904}
   - component: {fileID: 1406029903}
-  - component: {fileID: 1406029902}
   m_Layer: 5
   m_Name: ConfigPanel
   m_TagString: Untagged
@@ -22172,30 +22201,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 980, y: 1820}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1406029902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406029900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 359d0f82b13a08a4588b386a3d82773e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ConfigProgressivo
-  areaImagens: {fileID: 0}
-  btnAdicionarImagem: {fileID: 0}
-  btnIniciarJogo: {fileID: 470240716}
-  gallery: {fileID: 1406029903}
-  uiSource: {fileID: 1392375832}
-  configSound: {fileID: 8300000, guid: f6d9c04360ad4c843a6621e246911ebe, type: 3}
-  tempoFase1Inicio: 0
-  tempoFase1Fim: 3
-  tempoFase2Inicio: 3
-  tempoFase2Fim: 22
-  tempoFase3Inicio: 22
-  tempoFase3Fim: 25
 --- !u!114 &1406029903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23332,7 +23337,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 128161878}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ConfigProgressivo, Assembly-CSharp
         m_MethodName: OnTamanhoSelecionado
         m_Mode: 1
@@ -24383,9 +24388,9 @@ RectTransform:
   m_Father: {fileID: 1416821702}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_SizeDelta: {x: -17, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1569532107
 MonoBehaviour:
@@ -25379,7 +25384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd27ab25e6681d458d3b49dbdaeaa9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RankingUI
-  content: {fileID: 0}
+  content: {fileID: 130978223}
   rowPrefab: {fileID: 8431247081946396846, guid: f6a0d436e90a1dc4fac40c838c61b555, type: 3}
 --- !u!114 &1621809422
 MonoBehaviour:
@@ -25455,6 +25460,52 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1626028496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1626028498}
+  - component: {fileID: 1626028497}
+  m_Layer: 0
+  m_Name: PuzzleStartGameButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1626028497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626028496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f689d0ce1716d4840b194dd73dc9256e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleStartGameButton
+  uiRouter: {fileID: 1612434571}
+  puzzleBoard: {fileID: 69916846}
+--- !u!4 &1626028498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626028496}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 212.29254, y: 342.0977, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1627488985
 GameObject:
   m_ObjectHideFlags: 0
@@ -25917,38 +25968,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1219001695}
-        m_TargetAssemblyTypeName: ConfigController, Assembly-CSharp
-        m_MethodName: SetBoard3x2
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 856586364}
-        m_TargetAssemblyTypeName: BoardSizeSelectorBtns, Assembly-CSharp
+      - m_Target: {fileID: 158487221}
+        m_TargetAssemblyTypeName: PuzzleBoardSizeSelector, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 168115471}
-        m_TargetAssemblyTypeName: ConfigProgressivo, Assembly-CSharp
-        m_MethodName: OnTamanhoSelecionado
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -25973,7 +26000,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1869669095861986661, guid: 6b1835fb552300b4a812f05a1f58a809, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -29311,7 +29338,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.00025376442, y: -0.00013903064}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1842454743
 MonoBehaviour:
@@ -30879,7 +30906,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 20, y: -360}
-  m_SizeDelta: {x: 100, y: 0}
+  m_SizeDelta: {x: 100, y: 20}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1937033819
 MonoBehaviour:
@@ -32903,7 +32930,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 128161878}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ConfigProgressivo, Assembly-CSharp
         m_MethodName: OnTamanhoSelecionado
         m_Mode: 1
@@ -33429,7 +33456,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 128161878}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ConfigProgressivo, Assembly-CSharp
         m_MethodName: OnTamanhoSelecionado
         m_Mode: 1
@@ -33637,34 +33664,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1219001695}
-        m_TargetAssemblyTypeName: ConfigController, Assembly-CSharp
-        m_MethodName: SetBoard2x2
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 856586364}
-        m_TargetAssemblyTypeName: BoardSizeSelectorBtns, Assembly-CSharp
+      - m_Target: {fileID: 158487221}
+        m_TargetAssemblyTypeName: PuzzleBoardSizeSelector, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 168115471}
-        m_TargetAssemblyTypeName: ConfigProgressivo, Assembly-CSharp
-        m_MethodName: OnTamanhoSelecionado
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -33693,7 +33696,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1869669095861986661, guid: 6b1835fb552300b4a812f05a1f58a809, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -33987,6 +33990,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132566855}
   m_CullTransparentMesh: 1
+--- !u!1001 &1340802512026639933
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1048628525465579660, guid: 071108b6cd0851c43931244962d44756, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 212.29254
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048628525465579660, guid: 071108b6cd0851c43931244962d44756, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 342.0977
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048628525465579660, guid: 071108b6cd0851c43931244962d44756, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048628525465579660, guid: 071108b6cd0851c43931244962d44756, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048628525465579660, guid: 071108b6cd0851c43931244962d44756, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048628525465579660, guid: 071108b6cd0851c43931244962d44756, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048628525465579660, guid: 071108b6cd0851c43931244962d44756, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048628525465579660, guid: 071108b6cd0851c43931244962d44756, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048628525465579660, guid: 071108b6cd0851c43931244962d44756, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048628525465579660, guid: 071108b6cd0851c43931244962d44756, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045399214765984610, guid: 071108b6cd0851c43931244962d44756, type: 3}
+      propertyPath: m_Name
+      value: PuzzlePiece
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 071108b6cd0851c43931244962d44756, type: 3}
 --- !u!1001 &2259812865127782463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34140,3 +34200,8 @@ SceneRoots:
   - {fileID: 984916790}
   - {fileID: 2259812865127782463}
   - {fileID: 1518778535}
+  - {fileID: 1340802512026639933}
+  - {fileID: 1626028498}
+  - {fileID: 158487222}
+  - {fileID: 105598967}
+  - {fileID: 287738882}

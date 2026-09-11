@@ -33,6 +33,8 @@ public class GameBoard : MonoBehaviour
         // (opcional) auto-pega refs se esquecer no Inspector
         if (boardParent == null) boardParent = transform;
         if (grid == null) grid = GetComponent<GridLayoutGroup>();
+        if (grid == null && boardParent != null) grid = boardParent.GetComponent<GridLayoutGroup>();
+        if (grid == null) Debug.LogError($"GameBoard: 'Grid' não configurado no Inspector e não foi encontrado automaticamente. (objeto: {gameObject.name})", this);
     }
 
     public void StartGame()
