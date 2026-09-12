@@ -8,7 +8,7 @@ public class ScoreEntry
     public int tries;
     public int seconds;
 
-    // novo: tamanho/dificuldade
+    // tamanho/dificuldade
     public int rows;
     public int cols;
 

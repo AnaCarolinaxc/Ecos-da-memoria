@@ -33,6 +33,7 @@ public class FormularioManager : MonoBehaviour
         btnFechar.onClick.AddListener(FecharFormulario);
 
         popupFormulario_pzg.SetActive(false);
+        btnEnviar_pzg.onClick.AddListener(EnviarFormulario_pzg);
         btnFechar_pzg.onClick.AddListener(FecharFormulario_pzg);
     }
 
@@ -93,9 +94,9 @@ public class FormularioManager : MonoBehaviour
         yield return null;
         #endif
 
-        formularioData = JsonUtility.FromJson<FormularioData>(json);
+        formularioData_pzg = JsonUtility.FromJson<FormularioData>(json);
 
-        foreach (var pergunta in formularioData.perguntas)
+        foreach (var pergunta in formularioData_pzg.perguntas)
         {
             GameObject obj = Instantiate(prefabPergunta_pzg, containerPerguntas_pzg);
             PerguntaItem item = obj.GetComponent<PerguntaItem>();
@@ -111,7 +112,7 @@ public class FormularioManager : MonoBehaviour
 
      public void FecharFormulario_pzg()
     {
-        popupFormulario.SetActive(false);
+        popupFormulario_pzg.SetActive(false);
     }
 
 
@@ -135,6 +136,27 @@ public class FormularioManager : MonoBehaviour
         FecharFormulario();
     }
 
+    void EnviarFormulario_pzg()
+    {
+        RespostasData respostas = new RespostasData();
+        respostas.dataHora = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        respostas.respostas = new List<Resposta>();
+
+        foreach (var item in perguntaItems_pzg)
+        {
+            respostas.respostas.Add(new Resposta
+            {
+                perguntaId = item.pergunta.id,
+                textoPergunta = item.pergunta.texto,
+                respostaSelecionada = item.RespostaSelecionada()
+            });
+        }
+
+        SalvarRespostas_pzg(respostas);
+        FecharFormulario_pzg();
+    }
+
+
     void SalvarRespostas(RespostasData respostas)
 {
     string json = JsonUtility.ToJson(respostas, true);
@@ -148,11 +170,36 @@ public class FormularioManager : MonoBehaviour
     if (!Directory.Exists(pasta))
         Directory.CreateDirectory(pasta);
 
-    string nomeArquivo = "resposta_" +
+    string nomeArquivo = "resposta_memoria_" +
         System.DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".json";
     string caminhoCompleto = Path.Combine(pasta, nomeArquivo);
 
     File.WriteAllText(caminhoCompleto, json);
     Debug.Log("Respostas salvas em: " + caminhoCompleto);
 }
+
+
+    void SalvarRespostas_pzg(RespostasData respostas)
+{
+    string json = JsonUtility.ToJson(respostas, true);
+
+    #if UNITY_ANDROID && !UNITY_EDITOR
+    string pasta = "/storage/emulated/0/Download/EcosDaMemoria";
+    #else
+    string pasta = Path.Combine(Application.persistentDataPath, "Respostas");
+    #endif
+    
+    Debug.Log($"[FormularioManager] Tentando salvar em: {pasta}");
+
+    if (!Directory.Exists(pasta))
+        Directory.CreateDirectory(pasta);
+
+    string nomeArquivo = "resposta_puzzle_" +
+        System.DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".json";
+    string caminhoCompleto = Path.Combine(pasta, nomeArquivo);
+
+    File.WriteAllText(caminhoCompleto, json);
+    Debug.Log("Respostas salvas em: " + caminhoCompleto);
+}
+
 }
