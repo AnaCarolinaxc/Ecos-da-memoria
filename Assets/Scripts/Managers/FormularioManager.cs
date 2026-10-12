@@ -20,6 +20,15 @@ public class FormularioManager : MonoBehaviour
     public Button btnEnviar_pzg;
     public Button btnFechar_pzg;
 
+    public GameObject popupFormulario_upg;
+    public Transform containerPerguntas_upg;
+    public GameObject prefabPergunta_upg;
+    public Button btnEnviar_upg;
+    public Button btnFechar_upg;
+    private FormularioData formularioData_upg;
+
+private List<PerguntaItem> perguntaItems_upg = new List<PerguntaItem>();
+
     private FormularioData formularioData;
     private List<PerguntaItem> perguntaItems = new List<PerguntaItem>();
 
@@ -35,6 +44,10 @@ public class FormularioManager : MonoBehaviour
         popupFormulario_pzg.SetActive(false);
         btnEnviar_pzg.onClick.AddListener(EnviarFormulario_pzg);
         btnFechar_pzg.onClick.AddListener(FecharFormulario_pzg);
+
+        popupFormulario_upg.SetActive(false);
+        btnEnviar_upg.onClick.AddListener(EnviarFormulario_upg);
+        btnFechar_upg.onClick.AddListener(FecharFormulario_upg);
     }
 
     public void AbrirFormulario()
@@ -81,7 +94,7 @@ public class FormularioManager : MonoBehaviour
     {
         foreach (Transform child in containerPerguntas_pzg)
             Destroy(child.gameObject);
-        perguntaItems.Clear();
+        perguntaItems_pzg.Clear();
 
         string path = Path.Combine(Application.streamingAssetsPath, "questions.json");
 
@@ -101,7 +114,7 @@ public class FormularioManager : MonoBehaviour
             GameObject obj = Instantiate(prefabPergunta_pzg, containerPerguntas_pzg);
             PerguntaItem item = obj.GetComponent<PerguntaItem>();
             item.Configurar(pergunta);
-            perguntaItems.Add(item);
+            perguntaItems_pzg.Add(item);
         }
     }
 
@@ -200,6 +213,84 @@ public class FormularioManager : MonoBehaviour
 
     File.WriteAllText(caminhoCompleto, json);
     Debug.Log("Respostas salvas em: " + caminhoCompleto);
+}
+
+public void AbrirFormulario_upg()
+{
+    popupFormulario_upg.SetActive(true);
+    StartCoroutine(CarregarEExibir_upg());
+}
+
+private IEnumerator CarregarEExibir_upg()
+{
+    foreach (Transform child in containerPerguntas_upg)
+        Destroy(child.gameObject);
+    perguntaItems_upg.Clear();
+
+    string path = Path.Combine(Application.streamingAssetsPath, "questions.json");
+
+    #if UNITY_ANDROID && !UNITY_EDITOR
+    UnityWebRequest www = UnityWebRequest.Get(path);
+    yield return www.SendWebRequest();
+    string json = www.downloadHandler.text;
+    #else
+    string json = File.ReadAllText(path);
+    yield return null;
+    #endif
+
+    var data = JsonUtility.FromJson<FormularioData>(json);
+
+    foreach (var pergunta in data.perguntas)
+    {
+        GameObject obj = Instantiate(prefabPergunta_upg, containerPerguntas_upg);
+        PerguntaItem item = obj.GetComponent<PerguntaItem>();
+        item.Configurar(pergunta);
+        perguntaItems_upg.Add(item);
+    }
+}
+
+public void FecharFormulario_upg()
+{
+    popupFormulario_upg.SetActive(false);
+}
+
+void EnviarFormulario_upg()
+{
+    RespostasData respostas = new RespostasData();
+    respostas.dataHora = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+    respostas.respostas = new List<Resposta>();
+
+    foreach (var item in perguntaItems_upg)
+    {
+        respostas.respostas.Add(new Resposta
+        {
+            perguntaId = item.pergunta.id,
+            textoPergunta = item.pergunta.texto,
+            respostaSelecionada = item.RespostaSelecionada()
+        });
+    }
+
+    SalvarRespostas_upg(respostas);
+    FecharFormulario_upg();
+}
+
+void SalvarRespostas_upg(RespostasData respostas)
+{
+    string json = JsonUtility.ToJson(respostas, true);
+
+    #if UNITY_ANDROID && !UNITY_EDITOR
+    string pasta = "/storage/emulated/0/Download/EcosDaMemoria";
+    #else
+    string pasta = Path.Combine(Application.persistentDataPath, "Respostas");
+    #endif
+
+    if (!Directory.Exists(pasta))
+        Directory.CreateDirectory(pasta);
+
+    string nomeArquivo = "resposta_word_" +
+        System.DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".json";
+    File.WriteAllText(Path.Combine(pasta, nomeArquivo), json);
+    Debug.Log("Respostas salvas em: " + Path.Combine(pasta, nomeArquivo));
 }
 
 }

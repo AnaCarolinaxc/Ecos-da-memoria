@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 417ed145e7529f44494a4f73e938f702
+guid: 1a41838def15430418b4535b8524fd1e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3137199361779273507
-    second: upg-square-orange_0
+      213: 2687093510591318353
+    second: banheira_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: upg-square-orange_0
+      name: banheira_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 32
         y: 0
-        width: 85
-        height: 61
+        width: 448
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dd070935dcd6674d0800000000000000
-      internalID: -3137199361779273507
+      spriteID: 1598d01af497a4520800000000000000
+      internalID: 2687093510591318353
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      upg-square-orange_0: -3137199361779273507
+      banheira_0: 2687093510591318353
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
