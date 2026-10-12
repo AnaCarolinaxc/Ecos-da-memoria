@@ -8,7 +8,7 @@ public class PuzzleBoardSizeSelector : MonoBehaviour
     public Color selected = new Color(0.9f, 0.5f, 0.75f);
     public PuzzlePreviewGrid previewGrid;
 
-    void Start() => Select(1); //já vem marcado no 3x3
+   // void Start() => Select(1); //já vem marcado no 3x3
 
     public void Select(int index)
     {

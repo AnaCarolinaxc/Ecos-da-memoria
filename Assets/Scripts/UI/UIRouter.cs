@@ -12,7 +12,10 @@ public class UIRouter : MonoBehaviour
     public GameObject pzg_configPanel;
     public GameObject pzg_playingPanel;
     public GameObject pzg_rankingPanel;
-    
+    public GameObject upg_homePanel;
+    public GameObject upg_configPanel;
+    public GameObject upg_playingPanel;
+    public GameObject upg_rankingPanel;
 
 
     [Header("Áudio")]
@@ -37,6 +40,12 @@ public class UIRouter : MonoBehaviour
     public void Show_pzgPlaying() => ShowOnly(pzg_playingPanel, null, false);
     public void Show_pzgRanking()  => ShowOnly(pzg_rankingPanel, null, false);
 
+    public void Show_upgHome()    => ShowOnly(upg_homePanel, null, false);
+    public void Show_upgConfig()  => ShowOnly(upg_configPanel, null, false);
+    public void Show_upgPlaying() => ShowOnly(upg_playingPanel, null, false);
+    public void Show_upgRanking()  => ShowOnly(upg_rankingPanel, null, false);
+
+
 
     public void ShowRanking(bool playSound = true)
         => ShowOnly(ranking, rankingSound, playSound);
@@ -49,10 +58,16 @@ void ShowOnly(GameObject target, AudioClip clip, bool playSound)
     config.SetActive(false);
     playing.SetActive(false);
     ranking.SetActive(false);
+
     pzg_homePanel.SetActive(false);
     pzg_configPanel.SetActive(false);
     pzg_playingPanel.SetActive(false);
     pzg_rankingPanel.SetActive(false);
+
+    upg_homePanel.SetActive(false);
+    upg_configPanel.SetActive(false);
+    upg_playingPanel.SetActive(false);
+    upg_rankingPanel.SetActive(false);
 
 
     target.SetActive(true);
@@ -62,7 +77,7 @@ void ShowOnly(GameObject target, AudioClip clip, bool playSound)
     {
         uiSource.clip = clip;
         uiSource.time = 0f;
-        uiSource.Play(); // mudou de PlayOneShot para Play
+        uiSource.Play(); // muda de PlayOneShot para Play
     }
 }
 }
