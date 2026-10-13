@@ -16,6 +16,10 @@ public class UIRouter : MonoBehaviour
     public GameObject upg_configPanel;
     public GameObject upg_playingPanel;
     public GameObject upg_rankingPanel;
+    public GameObject aog_homePanel;
+    public GameObject aog_configPanel;
+    public GameObject aog_playingPanel;
+    public GameObject aog_rankingPanel;
 
 
     [Header("Áudio")]
@@ -45,7 +49,10 @@ public class UIRouter : MonoBehaviour
     public void Show_upgPlaying() => ShowOnly(upg_playingPanel, null, false);
     public void Show_upgRanking()  => ShowOnly(upg_rankingPanel, null, false);
 
-
+    public void Show_aogHome()    => ShowOnly(aog_homePanel, null, false);
+    public void Show_aogConfig()  => ShowOnly(aog_configPanel, null, false);
+    public void Show_aogPlaying() => ShowOnly(aog_playingPanel, null, false);
+    public void Show_aogRanking() => ShowOnly(aog_rankingPanel, null, false);
 
     public void ShowRanking(bool playSound = true)
         => ShowOnly(ranking, rankingSound, playSound);
@@ -69,6 +76,10 @@ void ShowOnly(GameObject target, AudioClip clip, bool playSound)
     upg_playingPanel.SetActive(false);
     upg_rankingPanel.SetActive(false);
 
+    aog_homePanel.SetActive(false);
+    aog_configPanel.SetActive(false);
+    aog_playingPanel.SetActive(false);
+    aog_rankingPanel.SetActive(false);
 
     target.SetActive(true);
 
