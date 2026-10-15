@@ -23,6 +23,8 @@ public class OrderBoard : MonoBehaviour
     public Color wrongColor = new Color(0.93f, 0.18f, 0.18f);
     public Color numberColor = new Color(0.2f, 0.12f, 0.02f);
     public float flyTime = 0.35f;
+    public int topColumns = 5;       // bolas por fileira em cima
+    public float topGap = 12f;       // espaço mínimo entre as bolas de cima
 
     [Header("Física (unidades do Canvas)")]
     public float gravity = 3500f;
@@ -143,21 +145,21 @@ public class OrderBoard : MonoBehaviour
         return Mathf.Min(maxDiameter, arenaRect.width / Mathf.Max(1f, arenaDivisor));
     }
 
-    // tamanho na fileira de cima: encolhe só o necessário para todas as bolas caberem
+        // tamanho na fileira de cima: encolhe só o necessário para todas as bolas caberem
     float ComputeTopDiameter()
     {
-        if (!shrinkOnTop) return diameter;   // mesmo tamanho; as fileiras descem quanto precisar
+        int cols = Mathf.Max(1, topColumns);
 
-        float d = diameter;
-        while (d > 30f)
+        // sempre cabe cols bolas na largura
+        float d = Mathf.Min(diameter, (topRect.width - (cols - 1) * topGap) / cols);
+
+        // opcional: também encolhe para caber na altura (várias fileiras)
+        if (shrinkOnTop)
         {
-            float c = d * 1.12f;
-            int perRow = Mathf.Max(1, Mathf.FloorToInt(topRect.width / c));
-            int rows = Mathf.CeilToInt(count / (float)perRow);
-            if (rows * c <= topRect.height) break;
-            d -= 4f;
+            int rows = Mathf.CeilToInt(count / (float)cols);
+            d = Mathf.Min(d, (topRect.height - (rows - 1) * topGap) / rows);
         }
-        return d;
+        return Mathf.Max(30f, d);
     }
 
     void Clear()
@@ -206,13 +208,16 @@ public class OrderBoard : MonoBehaviour
 
     Vector2 SlotPosition(int index)
     {
-        int perRow = Mathf.Max(1, Mathf.FloorToInt(topRect.width / cell));
-        int row = index / perRow;
-        int col = index % perRow;
+        int cols = Mathf.Max(1, topColumns);
+        int row = index / cols;
+        int col = index % cols;
 
-        float startX = topRect.xMin + (topRect.width - perRow * cell) * 0.5f;
-        float x = startX + (col + 0.5f) * cell;
-        float y = topRect.yMax - (row + 0.5f) * cell;
+        // colunas espalhadas de borda a borda; a última fileira fica alinhada à esquerda
+        float stepX = cols > 1 ? (topRect.width - topDiameter) / (cols - 1) : 0f;
+        float x = cols > 1 ? topRect.xMin + topDiameter * 0.5f + col * stepX
+                        : topRect.center.x;
+
+        float y = topRect.yMax - topDiameter * 0.5f - row * (topDiameter + topGap);
         return new Vector2(x, y);
     }
 
