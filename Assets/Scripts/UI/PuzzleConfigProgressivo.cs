@@ -11,11 +11,18 @@ public class PuzzleConfigProgressivo : MonoBehaviour
     [Header("Aparece depois de escolher a dificuldade")]
     public GameObject playButton;        
 
+    [Header("Áudio (1 por etapa, na ordem em que aparecem)")]
+    public UIRouter uiRouter;            // vazio = acha sozinho na cena
+    public AudioClip etapa1Sound;        // ao abrir a tela: colocar a imagem
+    public AudioClip etapa2Sound;        // depois de colocar a imagem: escolher a dificuldade
+    public AudioClip etapa3Sound;        // depois de escolher a dificuldade: apertar jogar
+
     [Header("Preview (os mesmos usados no PuzzleImagePicker)")]
     public Image previewImage;           
     public PuzzlePreviewGrid previewGrid; 
 
     bool tamanhoEscolhido;
+    bool tinhaImagem;
     bool redesenhar;
     Sprite spriteInicial;
     Color corInicial;
@@ -46,6 +53,7 @@ public class PuzzleConfigProgressivo : MonoBehaviour
     {
         // recomeça do zero
         tamanhoEscolhido = false;
+        tinhaImagem = false;
 
         if (PuzzleManager.I != null) PuzzleManager.I.SetImage(null);
 
@@ -58,6 +66,8 @@ public class PuzzleConfigProgressivo : MonoBehaviour
         redesenhar = true;
 
         Refresh();
+
+        PlayEtapa(etapa1Sound);   // etapa 1: colocar a imagem
     }
 
     // A galeria devolve a imagem de forma assíncrona (callback)
@@ -75,13 +85,27 @@ public class PuzzleConfigProgressivo : MonoBehaviour
 
     public void OnTamanhoEscolhido()
     {
+        bool primeiraVez = !tamanhoEscolhido;
         tamanhoEscolhido = true;
         Refresh();
+
+        if (primeiraVez) PlayEtapa(etapa3Sound);   // etapa 3: apertar jogar
+    }
+
+    void PlayEtapa(AudioClip clip)
+    {
+        if (clip == null) return;
+        if (uiRouter == null) uiRouter = FindFirstObjectByType<UIRouter>(FindObjectsInactive.Include);
+        if (uiRouter != null) uiRouter.PlayUI(clip);
     }
 
     void Refresh()
     {
         bool temImagem = PuzzleManager.I != null && PuzzleManager.I.HasImage();
+
+        // etapa 2: a imagem acabou de ser escolhida
+        if (temImagem && !tinhaImagem) PlayEtapa(etapa2Sound);
+        tinhaImagem = temImagem;
 
         if (previewGroups != null)
             foreach (var cg in previewGroups)

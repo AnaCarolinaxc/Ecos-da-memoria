@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Text;
 using UnityEngine;
 
 public class WordBoard : MonoBehaviour
@@ -13,11 +15,15 @@ public class WordBoard : MonoBehaviour
     public WordItemView wordItemPrefab;
 
     [Header("Áudio (\"Toque em qualquer item para ouvir\")")]
-    public AudioSource itemSource;
+    public AudioSource itemSource;      // vazio = cria sozinho
+    public UIRouter uiRouter;           // vazio = acha sozinho (usado para cortar a fala de orientação)
 
     [Header("Feedback de erro")]
     public int blinkCount = 3;
     public float blinkInterval = 0.12f;
+
+    // true enquanto o áudio da última palavra clicada ainda está tocando
+    public bool IsItemAudioPlaying => itemSource != null && itemSource.isPlaying;
 
     readonly List<WordItemView> items = new List<WordItemView>();
     WordItemView selected;
@@ -94,7 +100,7 @@ public class WordBoard : MonoBehaviour
 
         var audios = new Dictionary<string, AudioClip>();
         foreach (var clip in Resources.LoadAll<AudioClip>(path))
-            audios[clip.name.ToLowerInvariant()] = clip;
+            audios[Key(clip.name)] = clip;
 
         var seen = new HashSet<string>();
         foreach (var sprite in Resources.LoadAll<Sprite>(path))
@@ -103,10 +109,21 @@ public class WordBoard : MonoBehaviour
             if (string.IsNullOrEmpty(word)) continue;
             if (!seen.Add(word.ToLowerInvariant())) continue; // evita duas palavras iguais
 
-            audios.TryGetValue(sprite.name.ToLowerInvariant(), out var audio);
+            audios.TryGetValue(Key(sprite.name), out var audio);
             list.Add(new Entry { image = sprite, word = word, audio = audio });
         }
         return list;
+    }
+
+    // Chave para casar imagem e áudio pelo nome: ignora maiúsculas e acentos ("rádio" = "radio")
+    static string Key(string text)
+    {
+        if (string.IsNullOrEmpty(text)) return "";
+        string d = text.Normalize(NormalizationForm.FormD);
+        var sb = new StringBuilder(d.Length);
+        foreach (char ch in d)
+            if (CharUnicodeInfo.GetUnicodeCategory(ch) != UnicodeCategory.NonSpacingMark) sb.Append(ch);
+        return sb.ToString().ToLowerInvariant();
     }
 
     // "micro-ondas" -> "Micro-ondas" | "pe_de_moleque" -> "Pe de moleque"
@@ -178,7 +195,18 @@ public class WordBoard : MonoBehaviour
 
     void PlayClip(AudioClip clip)
     {
-        if (itemSource == null || clip == null) return;
+        if (clip == null) return;
+
+        if (itemSource == null)
+        {
+            itemSource = gameObject.AddComponent<AudioSource>();
+            itemSource.playOnAwake = false;
+        }
+
+        // corta a fala de orientação (ingame) para não tocar junto com a palavra
+        if (uiRouter == null) uiRouter = FindFirstObjectByType<UIRouter>(FindObjectsInactive.Include);
+        if (uiRouter != null) uiRouter.StopUI();
+
         itemSource.Stop();
         itemSource.clip = clip;
         itemSource.Play();

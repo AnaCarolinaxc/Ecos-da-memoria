@@ -4,10 +4,10 @@ using UnityEngine;
 public class WinToRanking : MonoBehaviour
 {
     public UIRouter uiRouter;
-    public float delay = 0.6f;
+    public float delay = 0.6f;      // pausa DEPOIS do áudio de parabéns terminar
 
     [Header("Victory Sounds")]
-    public AudioSource sfxSource;
+    public AudioSource sfxSource;   // não é mais usado (o parabéns toca pelo UIRouter)
     public AudioClip[] victoryClips; // ← vários sons
 
     void OnEnable()
@@ -24,26 +24,30 @@ public class WinToRanking : MonoBehaviour
 
     void HandleWin()
     {
-        PlayRandomVictorySound(); // toca na hora
         StartCoroutine(GoRanking());
     }
 
-    void PlayRandomVictorySound()
+    // Toca o parabéns, espera ele terminar (+ "delay") e só então abre a classificação.
+    IEnumerator GoRanking()
     {
-        if (victoryClips.Length == 0 || sfxSource == null)
-            return;
+        float wait = delay;
+        ConfettiBurst.Fire(); // dispara confete
+        AudioClip clip = PickVictoryClip();
+        if (clip != null && uiRouter != null)
+        {
+            uiRouter.PlayUI(clip);
+            wait += clip.length;
+        }
 
-        int index = Random.Range(0, victoryClips.Length);
-        sfxSource.PlayOneShot(victoryClips[index]);
+        yield return new WaitForSeconds(wait);
+
+        if (uiRouter != null) uiRouter.ShowRanking(true);
+        else Debug.LogError("WinToRanking: uiRouter está NULL");
     }
 
-    IEnumerator GoRanking()
-{
-    yield return new WaitForSeconds(delay);
-
-    if (uiRouter != null)
-        uiRouter.ShowRanking(false); 
-    else
-        Debug.LogError("WinToRanking: uiRouter está NULL");
-}
+    AudioClip PickVictoryClip()
+    {
+        if (victoryClips == null || victoryClips.Length == 0) return null;
+        return victoryClips[Random.Range(0, victoryClips.Length)];
+    }
 }

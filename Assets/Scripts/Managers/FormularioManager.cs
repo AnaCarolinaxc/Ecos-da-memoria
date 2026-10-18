@@ -7,6 +7,10 @@ using UnityEngine.Networking;
 
 public class FormularioManager : MonoBehaviour
 {
+    [Header("Áudio")]
+    public UIRouter router;            // usado para tocar o áudio no mesmo AudioSource das telas
+    public AudioClip formularioSound;  // áudio do formulário (formulario)
+
     [Header("UI - Popup")]
     public GameObject popupFormulario;
     public Transform containerPerguntas;
@@ -67,12 +71,14 @@ private List<PerguntaItem> perguntaItems_upg = new List<PerguntaItem>();
     public void AbrirFormulario()
     {
         popupFormulario.SetActive(true);
+        PlayFormSound();
         StartCoroutine(CarregarEExibir());
     }
 
      public void AbrirFormulario_pzg()
     {
         popupFormulario_pzg.SetActive(true);
+        PlayFormSound();
         StartCoroutine(CarregarEExibir_pzg());
     }
 
@@ -135,11 +141,13 @@ private List<PerguntaItem> perguntaItems_upg = new List<PerguntaItem>();
     public void FecharFormulario()
     {
         popupFormulario.SetActive(false);
+        StopFormSound();
     }
 
      public void FecharFormulario_pzg()
     {
         popupFormulario_pzg.SetActive(false);
+        StopFormSound();
     }
 
 
@@ -232,6 +240,7 @@ private List<PerguntaItem> perguntaItems_upg = new List<PerguntaItem>();
 public void AbrirFormulario_upg()
 {
     popupFormulario_upg.SetActive(true);
+    PlayFormSound();
     StartCoroutine(CarregarEExibir_upg());
 }
 
@@ -266,6 +275,7 @@ private IEnumerator CarregarEExibir_upg()
 public void FecharFormulario_upg()
 {
     popupFormulario_upg.SetActive(false);
+    StopFormSound();
 }
 
 void EnviarFormulario_upg()
@@ -310,6 +320,7 @@ void SalvarRespostas_upg(RespostasData respostas)
 public void AbrirFormulario_aog()
 {
     popupFormulario_aog.SetActive(true);
+    PlayFormSound();
     StartCoroutine(CarregarEExibir_aog());
 }
 
@@ -344,6 +355,7 @@ private IEnumerator CarregarEExibir_aog()
 public void FecharFormulario_aog()
 {
     popupFormulario_aog.SetActive(false);
+    StopFormSound();
 }
 
 void EnviarFormulario_aog()
@@ -385,4 +397,13 @@ void SalvarRespostas_aog(RespostasData respostas)
     Debug.Log("Respostas salvas em: " + Path.Combine(pasta, nomeArquivo));
 }
 
+    void PlayFormSound()
+    {
+        if (router != null) router.PlayUI(formularioSound);
+    }
+
+    void StopFormSound()
+    {
+        if (router != null) router.StopUI();
+    }
 }

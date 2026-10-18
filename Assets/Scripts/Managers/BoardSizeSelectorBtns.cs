@@ -12,16 +12,31 @@ public class BoardSizeSelectorBtns : MonoBehaviour
 
     void Start()
     {
-        Select(0); // 2x2 já começa marcado
+        ResetSelection(); // nenhum botão começa marcado
+    }
+
+    // Chamado também pelo ConfigProgressivo toda vez que a tela de config abre
+    public void ResetSelection()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].GetComponent<Image>().color = normal;
+            buttons[i].transform.localScale = Vector3.one;
+        }
+
+        // volta pro padrão (2x2), sem nenhum botão marcado
+        if (GameManager.I != null)
+        {
+            GameManager.I.rows = 2;
+            GameManager.I.cols = 2;
+        }
     }
 
     public void Select(int index)
     {
         for (int i = 0; i < buttons.Length; i++)
         {
-            var img = buttons[i].GetComponent<Image>();
-
-            img.color = normal;
+            buttons[i].GetComponent<Image>().color = normal;
             buttons[i].transform.localScale = Vector3.one;
         }
 
