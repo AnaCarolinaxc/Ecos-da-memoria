@@ -1,5 +1,5 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ConfigProgressivo : MonoBehaviour
 {
@@ -11,76 +11,93 @@ public class ConfigProgressivo : MonoBehaviour
     [Header("Referência à galeria")]
     public GalleryUI gallery;
 
-    [Header("Áudio")]
+    [Header("Reset ao abrir a tela")]
+    [Tooltip("Objeto BoardSizeSelector (se vazio, o script procura sozinho)")]
+    public BoardSizeSelectorBtns tamanhoSelector;
+    [Tooltip("Se marcado, mantém as imagens escolhidas na rodada anterior")]
+    public bool manterImagens = true;
+
+    [Header("Áudio (um arquivo por etapa)")]
     public AudioSource uiSource;
-    public AudioClip configSound;
-    public float tempoFase1Inicio = 0f;
-    public float tempoFase1Fim = 3f;
-    public float tempoFase2Inicio = 3f;
-    public float tempoFase2Fim = 21f;
-    public float tempoFase3Inicio = 21f;
-    public float tempoFase3Fim = 25f;
+    [Tooltip("1 - ao abrir a tela: escolher o tamanho")]
+    public AudioClip somFase1;
+    [Tooltip("2 - depois de escolher o tamanho: adicionar imagens")]
+    public AudioClip somFase2;
+    [Tooltip("3 - quando o botão de jogar aparece")]
+    public AudioClip somFase3;
+
+    bool tamanhoJaEscolhido;
 
     void OnEnable()
-{
-    Debug.Log($"ConfigProgressivo OnEnable! sprites={gallery.GetAllSprites().Count}");
-    areaImagens.SetActive(false);
-    btnAdicionarImagem.SetActive(false);
-    btnIniciarJogo.SetActive(false);
+    {
+        // 1) esconde tudo PRIMEIRO: só o tamanho do tabuleiro fica visível
+        areaImagens.SetActive(false);
+        btnAdicionarImagem.SetActive(false);
+        btnIniciarJogo.SetActive(false);
+        tamanhoJaEscolhido = false;
 
-    // Se já tem imagens da sessão anterior, pula para fase final
-    if (gallery.GetAllSprites().Count > 0)
-    {
-        areaImagens.SetActive(true);
-        btnAdicionarImagem.SetActive(true);
-        btnIniciarJogo.SetActive(true);
-        TocarTrecho(tempoFase3Inicio, tempoFase3Fim);
+        // 2) tamanho do tabuleiro recomeça sem nada marcado
+        if (tamanhoSelector == null)
+            tamanhoSelector = FindObjectOfType<BoardSizeSelectorBtns>(true);
+        if (tamanhoSelector != null)
+            tamanhoSelector.ResetSelection();
+
+        if (!manterImagens && gallery != null)
+            gallery.Clear();
+
+        // espera 1 frame: o UIRouter para o áudio logo depois de abrir o painel
+        StartCoroutine(TocarDepoisDeUmFrame(somFase1));
     }
-    else
+
+    void OnDisable()
     {
-        TocarTrecho(tempoFase1Inicio, tempoFase1Fim);
+        StopAllCoroutines();
     }
-}
 
     public void OnTamanhoSelecionado()
     {
         areaImagens.SetActive(true);
         btnAdicionarImagem.SetActive(true);
-        AtualizarBtnJogar();
+        bool jogarLiberado = AtualizarBtnJogar(tocarSom: false);
 
-        TocarTrecho(tempoFase2Inicio, tempoFase2Fim);
+        // narração só na primeira escolha de tamanho; trocar de tamanho não repete
+        if (!tamanhoJaEscolhido)
+        {
+            tamanhoJaEscolhido = true;
+            // se já tem imagens (mantidas), o próximo passo é jogar
+            Tocar(jogarLiberado ? somFase3 : somFase2);
+        }
     }
 
     public void OnImagemAdicionada()
     {
-        AtualizarBtnJogar();
+        AtualizarBtnJogar(tocarSom: true);
     }
 
-    private void AtualizarBtnJogar()
+    // retorna true se o botão de jogar está visível
+    private bool AtualizarBtnJogar(bool tocarSom)
     {
         bool temImagem = gallery.GetAllSprites().Count > 0;
         if (temImagem && !btnIniciarJogo.activeSelf)
         {
             btnIniciarJogo.SetActive(true);
-            TocarTrecho(tempoFase3Inicio, tempoFase3Fim);
+            if (tocarSom) Tocar(somFase3);
         }
+        return btnIniciarJogo.activeSelf;
     }
 
-    private void TocarTrecho(float inicio, float fim)
+    private IEnumerator TocarDepoisDeUmFrame(AudioClip clip)
     {
-        Debug.Log($"TocarTrecho: inicio={inicio} fim={fim} uiSource={uiSource} configSound={configSound}");
-        if (uiSource == null || configSound == null) return;
+        yield return null;
+        Tocar(clip);
+    }
+
+    private void Tocar(AudioClip clip)
+    {
+        if (uiSource == null || clip == null) return;
         uiSource.Stop();
-        uiSource.clip = configSound;
-        uiSource.time = inicio;
+        uiSource.clip = clip;
+        uiSource.time = 0f;
         uiSource.Play();
-        StopAllCoroutines();
-        StartCoroutine(PararEm(fim));
-    }
-
-    private System.Collections.IEnumerator PararEm(float fim)
-    {
-        yield return new WaitUntil(() => uiSource.time >= fim);
-        uiSource.Stop();
     }
 }

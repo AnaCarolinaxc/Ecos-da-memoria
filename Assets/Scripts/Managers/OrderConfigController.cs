@@ -16,6 +16,11 @@ public class OrderConfigController : MonoBehaviour
     [Header("Etapa 3 - jogar (aparece depois da dificuldade)")]
     public GameObject playButton;
 
+    [Header("Áudio (1 por etapa, na ordem em que aparecem)")]
+    public AudioClip etapa1Sound;              // ao abrir a tela: escolher a ordem
+    public AudioClip etapa2Sound;              // depois de escolher a ordem: escolher a dificuldade
+    public AudioClip etapa3Sound;              // depois de escolher a dificuldade: apertar jogar
+
     [Header("Cores dos botões")]
     public Color idleColor = Color.white;
     public Color selectedColor = new Color(0.62f, 0.78f, 0.45f);
@@ -28,18 +33,33 @@ public class OrderConfigController : MonoBehaviour
         orderIndex = -1;
         difficultyIndex = -1;
         Refresh();
+
+        PlayEtapa(etapa1Sound);   // etapa 1: escolher a ordem
     }
 
     public void SelectOrder(int index)
     {
+        bool primeiraVez = orderIndex < 0;
         orderIndex = index;
         Refresh();
+
+        if (primeiraVez) PlayEtapa(etapa2Sound);   // etapa 2: escolher a dificuldade
     }
 
     public void SelectDifficulty(int index)
     {
+        bool primeiraVez = difficultyIndex < 0;
         difficultyIndex = index;
         Refresh();
+
+        if (primeiraVez) PlayEtapa(etapa3Sound);   // etapa 3: apertar jogar
+    }
+
+    void PlayEtapa(AudioClip clip)
+    {
+        if (clip == null) return;
+        if (uiRouter == null) uiRouter = FindFirstObjectByType<UIRouter>(FindObjectsInactive.Include);
+        if (uiRouter != null) uiRouter.PlayUI(clip);
     }
 
     public void Play()

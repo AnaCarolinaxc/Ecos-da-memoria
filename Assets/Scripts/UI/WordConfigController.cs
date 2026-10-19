@@ -20,6 +20,11 @@ public class WordConfigController : MonoBehaviour
     [Header("Botão Jogar")]
     public GameObject playButton;           // só aparece depois de escolher os dois
 
+    [Header("Áudio (1 por etapa, na ordem em que aparecem)")]
+    public AudioClip etapa1Sound;           // ao abrir a tela: escolher o tema
+    public AudioClip etapa2Sound;           // depois de escolher o tema: escolher a dificuldade
+    public AudioClip etapa3Sound;           // depois de escolher a dificuldade: apertar jogar
+
     [Header("Cores dos botões")]
     public Color idleColor = new Color(1f, 0.90f, 0.70f);
     public Color selectedColor = new Color(0.85f, 0.65f, 0.15f);
@@ -32,20 +37,35 @@ public class WordConfigController : MonoBehaviour
         themeIndex = -1;
         difficultyIndex = -1;
         Refresh();
+
+        PlayEtapa(etapa1Sound);   // etapa 1: escolher o tema
     }
 
     // Ligar nos botões de tema: OnClick -> SelectTheme(0), (1), (2)
     public void SelectTheme(int index)
     {
+        bool primeiraVez = themeIndex < 0;
         themeIndex = index;
         Refresh();
+
+        if (primeiraVez) PlayEtapa(etapa2Sound);   // etapa 2: escolher a dificuldade
     }
 
     // Ligar nos botões de dificuldade: OnClick -> SelectDifficulty(0), (1), (2)
     public void SelectDifficulty(int index)
     {
+        bool primeiraVez = difficultyIndex < 0;
         difficultyIndex = index;
         Refresh();
+
+        if (primeiraVez) PlayEtapa(etapa3Sound);   // etapa 3: apertar jogar
+    }
+
+    void PlayEtapa(AudioClip clip)
+    {
+        if (clip == null) return;
+        if (uiRouter == null) uiRouter = FindFirstObjectByType<UIRouter>(FindObjectsInactive.Include);
+        if (uiRouter != null) uiRouter.PlayUI(clip);
     }
 
     // Ligar no botão Jogar

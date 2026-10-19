@@ -4,10 +4,10 @@ using UnityEngine;
 public class WordWinToRanking : MonoBehaviour
 {
     public UIRouter uiRouter;
-    public float delay = 0.6f;
+    public float delay = 0.6f;      // pausa DEPOIS do áudio de parabéns terminar
 
     [Header("Victory Sounds")]
-    public AudioSource sfxSource;
+    public AudioSource sfxSource;   // não é mais usado (o parabéns toca pelo UIRouter)
     public AudioClip[] victoryClips;
 
     bool subscribed;
@@ -32,21 +32,39 @@ public class WordWinToRanking : MonoBehaviour
 
     void HandleWin()
     {
-        PlayRandomVictorySound();
         StartCoroutine(GoRanking());
     }
 
-    void PlayRandomVictorySound()
-    {
-        if (sfxSource == null || victoryClips == null || victoryClips.Length == 0) return;
-        sfxSource.PlayOneShot(victoryClips[Random.Range(0, victoryClips.Length)]);
-    }
-
+    // Toca o parabéns, espera ele terminar (+ "delay") e só então abre a classificação.
     IEnumerator GoRanking()
     {
-        yield return new WaitForSeconds(delay);
+        float wait = delay;
+
+        if (uiRouter != null)
+        {
+            ConfettiBurst.Fire();   // confete explodindo na tela
+
+            // deixa terminar o áudio da última palavra clicada antes de tocar o parabéns
+            var board = FindFirstObjectByType<WordBoard>(FindObjectsInactive.Include);
+            while (board != null && board.IsItemAudioPlaying) yield return null;
+
+            AudioClip clip = PickVictoryClip();
+            if (clip != null)
+            {
+                uiRouter.PlayUI(clip);
+                wait += clip.length;
+            }
+        }
+
+        yield return new WaitForSeconds(wait);
 
         if (uiRouter != null) uiRouter.Show_upgRanking();
         else Debug.LogError("WordWinToRanking: uiRouter está NULL");
+    }
+
+    AudioClip PickVictoryClip()
+    {
+        if (victoryClips == null || victoryClips.Length == 0) return null;
+        return victoryClips[Random.Range(0, victoryClips.Length)];
     }
 }
