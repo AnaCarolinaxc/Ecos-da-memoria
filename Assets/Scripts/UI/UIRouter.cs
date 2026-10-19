@@ -111,4 +111,12 @@ void ShowOnly(GameObject target, AudioClip clip, bool playSound)
     {
         if (uiSource != null) uiSource.Stop();
     }
+
+    public void RestartCurrentUI()
+    {
+        if (uiSource == null || uiSource.clip == null || !uiSource.isPlaying) return;
+        uiSource.Stop();
+        uiSource.time = 0f;
+        uiSource.Play();
+    }
 }
